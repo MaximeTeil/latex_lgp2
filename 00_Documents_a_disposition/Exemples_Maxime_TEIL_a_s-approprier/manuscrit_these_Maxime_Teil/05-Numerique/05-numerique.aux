@@ -1,0 +1,178 @@
+\relax 
+\providecommand\zref@newlabel[2]{}
+\providecommand\hyper@newdestlabel[2]{}
+\citation{abaqus2016}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Travaux num\IeC {\'e}riques}{77}{chapter.223}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{chap:numerique}{{4}{77}{Travaux numériques}{chapter.223}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Segmentation des images de tomographie}{78}{section.224}}
+\newlabel{para05:segmentation}{{4.1}{78}{Segmentation des images de tomographie}{section.224}{}}
+\@writefile{toc}{\contentsline {paragraph}{}{78}{section*.225}}
+\newlabel{para05:etapeA}{{4.1}{78}{(a) Pré-traitement de l'image binaire -}{section*.229}{}}
+\@writefile{toc}{\contentsline {paragraph}{(a) Pr\IeC {\'e}-traitement de l'image binaire -}{78}{figure.caption.230}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Sch\IeC {\'e}matisation d'un milieu granulaire observ\IeC {\'e} par tomographie en vue d'expliquer le processus de segmentation. Une coupe du milieu granulaire r\IeC {\'e}el est repr\IeC {\'e}sent\IeC {\'e} en (a) tandis que (b) repr\IeC {\'e}sente son image apr\IeC {\`e}s seuillage.\relax }}{79}{figure.caption.226}}
+\newlabel{fig05:schema_segm}{{4.1}{79}{Schématisation d'un milieu granulaire observé par tomographie en vue d'expliquer le processus de segmentation. Une coupe du milieu granulaire réel est représenté en (a) tandis que (b) représente son image après seuillage.\relax }{figure.caption.226}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Sch\IeC {\'e}matisation d'une image issue de tomographie. Chaque couleur repr\IeC {\'e}sente un grain r\IeC {\'e}el.}}}{79}{subfigure.1.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Image seuill\IeC {\'e}e.}}}{79}{subfigure.1.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Cr\IeC {\'e}ation du masque de la phase solide (a) et \IeC {\'e}limination des porosit\IeC {\'e}s internes (b) \IeC {\`a} partir de l'image seuill\IeC {\'e}e.\relax }}{79}{figure.caption.230}}
+\newlabel{fig05:imProc_preTraitement}{{4.2}{79}{Création du masque de la phase solide (a) et élimination des porosités internes (b) à partir de l'image seuillée.\relax }{figure.caption.230}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Masque de la phase solide. Les traits en pointill\IeC {\'e}s repr\IeC {\'e}sentent la fronti\IeC {\`e}re de l'image seuill\IeC {\'e}e.}}}{79}{subfigure.2.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Retrait des porosit\IeC {\'e}s dans le masque de la phase solide.}}}{79}{subfigure.2.2}}
+\citation{scikit_image}
+\@writefile{toc}{\contentsline {paragraph}{(b) D\IeC {\'e}finition des marqueurs associ\IeC {\'e}s aux grains -}{80}{section*.234}}
+\@writefile{toc}{\contentsline {subparagraph}{M\IeC {\'e}thode "id\IeC {\'e}ale" :}{80}{section*.235}}
+\@writefile{toc}{\contentsline {subparagraph}{M\IeC {\'e}thode "adapt\IeC {\'e}e" :}{80}{figure.caption.237}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Identification des marqueurs \IeC {\`a} partir de la carte des distances du masque de la phase solide (a). Les maxima locaux sont recherch\IeC {\'e}s (b) afin de cr\IeC {\'e}er une image de marqueurs (c). Chacun des marqueur est labellis\IeC {\'e} de mani\IeC {\`e}re \IeC {\`a} ce qu'il soit unique (d).\relax }}{81}{figure.caption.237}}
+\newlabel{fig05:imProc_markers}{{4.3}{81}{Identification des marqueurs à partir de la carte des distances du masque de la phase solide (a). Les maxima locaux sont recherchés (b) afin de créer une image de marqueurs (c). Chacun des marqueur est labellisé de manière à ce qu'il soit unique (d).\relax }{figure.caption.237}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Carte des distances du masque de la phase solide}}}{81}{subfigure.3.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Recherche des maxima locaux.}}}{81}{subfigure.3.2}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {Marqueurs issus du seuillage de la carte des distances.}}}{81}{subfigure.3.3}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {Labellisation des marqueurs.}}}{81}{subfigure.3.4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Watershed r\IeC {\'e}alis\IeC {\'e} \IeC {\`a} partir des marqueurs labellis\IeC {\'e}s et bas\IeC {\'e} sur le contraste de l'image de tomographie.\relax }}{82}{figure.caption.244}}
+\newlabel{fig05:imProc_WS1}{{4.4}{82}{Watershed réalisé à partir des marqueurs labellisés et basé sur le contraste de l'image de tomographie.\relax }{figure.caption.244}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Image de tomographie utilis\IeC {\'e}e dans le watershed avec les marqueurs. La zone gris\IeC {\'e}e est la zone inactive du masque de la phase solide et n'est pas trait\IeC {\'e}e. les traits en pointill\IeC {\'e}s indiquent les fronti\IeC {\`e}res r\IeC {\'e}elles.}}}{82}{subfigure.4.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {R\IeC {\'e}sultat de la premi\IeC {\`e}re propagation des marqueurs par la fonction watershed. Les traits en pointill\IeC {\'e}s sont les fronti\IeC {\`e}res r\IeC {\'e}elles tandis que les zones color\IeC {\'e}es sont les labels. Une \IeC {\'e}rosion est r\IeC {\'e}alis\IeC {\'e}e \IeC {\`a} la fin du watershed.}}}{82}{subfigure.4.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces M\IeC {\'e}thode d'analyse et de correction des contacts\relax }}{83}{figure.caption.248}}
+\newlabel{fig05:imProc_contacts}{{4.5}{83}{Méthode d'analyse et de correction des contacts\relax }{figure.caption.248}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Mesure de la surface totale des labels (surfaces de la m\IeC {\^e}me couleur que les labels + surfaces oranges pour les labels qui ont un contact) et des surfaces de contact (en orange).}}}{83}{subfigure.5.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Correction des contacts. Les contacts dont la surface est petite par rapport \IeC {\`a} la surface des labels sont conserv\IeC {\'e}s. Les autres sont retir\IeC {\'e}s.}}}{83}{subfigure.5.2}}
+\@writefile{toc}{\contentsline {paragraph}{(c) Premier watershed -}{83}{figure.caption.244}}
+\@writefile{toc}{\contentsline {paragraph}{(d) Analyse et correction des contacts -}{83}{figure.caption.248}}
+\newlabel{eq05:contacts}{{4.1}{84}{(d) Analyse et correction des contacts -}{equation.251}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces  Correction de la fronti\IeC {\`e}re des grains par un second watershed.\relax }}{85}{figure.caption.253}}
+\newlabel{fig05:imProc_frontiere}{{4.6}{85}{Correction de la frontière des grains par un second watershed.\relax }{figure.caption.253}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {\'Erosions de chaque label pour former de nouveaux marqueurs.}}}{85}{subfigure.6.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Second watershed avec propagation des nouveaux marqueurs compte tenu du contraste de l'image de tomographie.}}}{85}{subfigure.6.2}}
+\@writefile{toc}{\contentsline {paragraph}{(e) Correction de la fronti\IeC {\`e}re des grains par un second watershed -}{85}{figure.caption.253}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Analyse et derni\IeC {\`e}res modifications de l'image segment\IeC {\'e}e.\relax }}{86}{figure.caption.257}}
+\newlabel{fig05:imProc_poro}{{4.7}{86}{Analyse et dernières modifications de l'image segmentée.\relax }{figure.caption.257}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Lissage de surface et \IeC {\'e}limination des porosit\IeC {\'e}s internes par des \IeC {\'e}tapes de fermeture et ouverture successives.}}}{86}{subfigure.7.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Post-traitement : les labels trop petits sont retir\IeC {\'e}s, les autres sont enregistr\IeC {\'e}s.}}}{86}{subfigure.7.2}}
+\@writefile{toc}{\contentsline {paragraph}{(f) Corrections de la g\IeC {\'e}om\IeC {\'e}trie 3D des grains -}{86}{figure.caption.257}}
+\newlabel{para05:post_segm}{{4.1}{86}{(g) Post-traitement de l'image segmentée -}{section*.260}{}}
+\@writefile{toc}{\contentsline {paragraph}{(g) Post-traitement de l'image segment\IeC {\'e}e -}{86}{section*.260}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces Visualisation du process de segmentation des grains de polystyr\IeC {\`e}ne sur une coupe 2D de la reconstruction de tomographie.\relax }}{87}{figure.caption.263}}
+\newlabel{fig05:process_segmentation}{{4.8}{87}{Visualisation du process de segmentation des grains de polystyrène sur une coupe 2D de la reconstruction de tomographie.\relax }{figure.caption.263}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Image d'origine trait\IeC {\'e}e}}}{87}{subfigure.8.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Image seuill\IeC {\'e}e}}}{87}{subfigure.8.2}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {Carte des distances}}}{87}{subfigure.8.3}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {Marqueurs (maxima locaux)}}}{87}{subfigure.8.4}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(e)}{\ignorespaces {Premier watershed}}}{87}{subfigure.8.5}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(f)}{\ignorespaces {Correction des contacts}}}{87}{subfigure.8.6}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(g)}{\ignorespaces {Correction des fronti\IeC {\`e}res}}}{87}{subfigure.8.7}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(h)}{\ignorespaces {Correction de la g\IeC {\'e}om\IeC {\'e}trie et post-traitement}}}{87}{subfigure.8.8}}
+\citation{fang_tetrahedral_2009}
+\@writefile{toc}{\contentsline {paragraph}{}{88}{figure.caption.263}}
+\@writefile{toc}{\contentsline {paragraph}{}{88}{section*.275}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Maillage des grains num\IeC {\'e}ris\IeC {\'e}s}{88}{section.276}}
+\newlabel{para05:maillage}{{4.2}{88}{Maillage des grains numérisés}{section.276}{}}
+\@writefile{toc}{\contentsline {paragraph}{}{88}{section*.277}}
+\@writefile{toc}{\contentsline {paragraph}{}{88}{section*.278}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Processus de maillage}{88}{subsection.279}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.9}{\ignorespaces R\IeC {\'e}sultat de la segmentation sur deux coupes 2D et une partie du volume 3D (des d\IeC {\'e}fauts de couleur en p\IeC {\'e}riph\IeC {\'e}rie des grains li\IeC {\'e}s \IeC {\`a} une compression au format jpeg sont observables)\relax }}{89}{figure.caption.272}}
+\newlabel{fig05:segmentation3D}{{4.9}{89}{Résultat de la segmentation sur deux coupes 2D et une partie du volume 3D (des défauts de couleur en périphérie des grains liés à une compression au format jpeg sont observables)\relax }{figure.caption.272}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Coupe en $z=200$}}}{89}{subfigure.9.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Vue 3D d'une partie des grains num\IeC {\'e}ris\IeC {\'e}s et d'une partie de l'image d'origine}}}{89}{subfigure.9.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Analyse et transformation du maillage volumique}{90}{subsection.287}}
+\newlabel{para05:maillage_correction}{{4.2.2}{90}{Analyse et transformation du maillage volumique}{subsection.287}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.10}{\ignorespaces Processus de maillage \IeC {\`a} partir d'une image 3D du grain\relax }}{91}{figure.caption.280}}
+\newlabel{fig05:process_maillage}{{4.10}{91}{Processus de maillage à partir d'une image 3D du grain\relax }{figure.caption.280}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Image 3D du grain}}}{91}{subfigure.10.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Maillage surfacique}}}{91}{subfigure.10.2}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {Corrections et simplification du maillage surfacique}}}{91}{subfigure.10.3}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {Maillage volumique \IeC {\`a} partir du maillage surfacique}}}{91}{subfigure.10.4}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(e)}{\ignorespaces {Coupe dans la hauteur du grain du maillage surfacique}}}{91}{subfigure.10.5}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(f)}{\ignorespaces {Coupe dans la hauteur du grain du maillage volumique}}}{91}{subfigure.10.6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.11}{\ignorespaces D\IeC {\'e}finitions des \IeC {\'e}l\IeC {\'e}ments t\IeC {\'e}tra\IeC {\'e}driques lin\IeC {\'e}aires C3D4 et quadratiques C3D10(M) du logiciel Abaqus.\relax }}{92}{figure.caption.289}}
+\newlabel{fig05:C3D4_C3D10}{{4.11}{92}{Définitions des éléments tétraédriques linéaires C3D4 et quadratiques C3D10(M) du logiciel Abaqus.\relax }{figure.caption.289}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {\'El\IeC {\'e}ment t\IeC {\'e}traedrique lin\IeC {\'e}aire \IeC {\`a} 4 n\oe {}uds - C3D4}}}{92}{subfigure.11.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {\'El\IeC {\'e}ment t\IeC {\'e}traedrique quadratique \IeC {\`a} 10 n\oe {}uds - C3D10}}}{92}{subfigure.11.2}}
+\@writefile{toc}{\contentsline {paragraph}{Changement des \IeC {\'e}l\IeC {\'e}ments lin\IeC {\'e}aires en \IeC {\'e}l\IeC {\'e}ments quadratiques\\}{92}{section*.288}}
+\@writefile{toc}{\contentsline {paragraph}{Modification du volume maill\IeC {\'e}\\}{93}{section*.292}}
+\newlabel{eq05:volume_tetraedre}{{4.2}{93}{Modification du volume maillé\\}{equation.293}{}}
+\citation{abaqus2016}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Introduction des grains dans un code \IeC {\'e}l\IeC {\'e}ments finis}{94}{section.294}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Cr\IeC {\'e}ation d'un mod\IeC {\`e}le Abaqus}{94}{subsection.295}}
+\newlabel{para05:abaqus}{{4.3.1}{94}{Création d'un modèle Abaqus}{subsection.295}{}}
+\citation{wypych_handbook_2016}
+\citation{wypych_handbook_2016}
+\@writefile{toc}{\contentsline {subsubsection}{Introduction des grains maill\IeC {\'e}s}{95}{section*.296}}
+\@writefile{toc}{\contentsline {subsubsection}{D\IeC {\'e}finition du mat\IeC {\'e}riau}{95}{section*.297}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.12}{\ignorespaces Courbes d\IeC {\'e}terminant le comportement du mat\IeC {\'e}riau polystyr\IeC {\`e}ne.\relax }}{96}{figure.caption.298}}
+\newlabel{fig05:PS_comportement}{{4.12}{96}{Courbes déterminant le comportement du matériau polystyrène.\relax }{figure.caption.298}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Assemblage}{96}{section*.299}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.13}{\ignorespaces Assemblage des grains maill\IeC {\'e}s constituant un \IeC {\'e}chantillon num\IeC {\'e}rique du milieu granulaire \IeC {\'e}tudi\IeC {\'e}. Ce volume est constitu\IeC {\'e} de \num {253} grains.\relax }}{97}{figure.caption.300}}
+\newlabel{fig05:assemblage_abaqus}{{4.13}{97}{Assemblage des grains maillés constituant un échantillon numérique du milieu granulaire étudié. Ce volume est constitué de \num {253} grains.\relax }{figure.caption.300}{}}
+\citation{engineeringtoolbox,matweb,wypych_handbook_2016}
+\citation{abaqus2016}
+\@writefile{toc}{\contentsline {subsubsection}{D\IeC {\'e}finition des surfaces}{98}{section*.301}}
+\@writefile{toc}{\contentsline {subsubsection}{D\IeC {\'e}finition des contacts}{98}{section*.302}}
+\@writefile{toc}{\contentsline {subsubsection}{Correction des contacts initiaux}{99}{section*.303}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.14}{\ignorespaces Correction d'une zone de contact pour laquelle une interp\IeC {\'e}n\IeC {\'e}tration des \IeC {\'e}l\IeC {\'e}ments \IeC {\'e}tait initialement pr\IeC {\'e}sente (a). La correction est faite par rapport \IeC {\`a} la surface rouge. La recherche des contacts n\oe {}ud-facette \IeC {\`a} l'int\IeC {\'e}rieur (b) et \IeC {\`a} l'ext\IeC {\'e}rieur (c) des grains permet d'identifier le n\oe {}uds \IeC {\`a} corriger. Les positions des n\oe {}uds B, C et D sont corrig\IeC {\'e}es (d). En r\IeC {\'e}alit\IeC {\'e} la position des n\oe {}uds n'est pas modifi\IeC {\'e}e dans ces travaux mais la distance qui les s\IeC {\'e}pare de la surface de contact corrig\IeC {\'e}e est enregistr\IeC {\'e}e et utilis\IeC {\'e} en offset dans le calcul des forces de contact.\relax }}{100}{figure.caption.304}}
+\newlabel{fig05:contact_correction}{{4.14}{100}{Correction d'une zone de contact pour laquelle une interpénétration des éléments était initialement présente (a). La correction est faite par rapport à la surface rouge. La recherche des contacts n\oe {}ud-facette à l'intérieur (b) et à l'extérieur (c) des grains permet d'identifier le n\oe {}uds à corriger. Les positions des n\oe {}uds B, C et D sont corrigées (d). En réalité la position des n\oe {}uds n'est pas modifiée dans ces travaux mais la distance qui les sépare de la surface de contact corrigée est enregistrée et utilisé en offset dans le calcul des forces de contact.\relax }{figure.caption.304}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Contact avec interp\IeC {\'e}n\IeC {\'e}tration des \IeC {\'e}l\IeC {\'e}ments}}}{100}{subfigure.14.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Recherche des n\oe {}uds \IeC {\`a} l'int\IeC {\'e}rieur des grains}}}{100}{subfigure.14.2}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {Recherche des n\oe {}uds \IeC {\`a} l'int\IeC {\'e}rieur des grains}}}{100}{subfigure.14.3}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {Surface de contact corrig\IeC {\'e}e}}}{100}{subfigure.14.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Conditions aux limites}{101}{subsection.309}}
+\newlabel{para05:abaqus_BC}{{4.3.2}{101}{Conditions aux limites}{subsection.309}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Cr\IeC {\'e}ation des n\oe {}uds de r\IeC {\'e}f\IeC {\'e}rence}{101}{section*.311}}
+\@writefile{toc}{\contentsline {subsubsection}{Couplage avec les n\oe {}uds de r\IeC {\'e}f\IeC {\'e}rence}{101}{section*.312}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.15}{\ignorespaces Sch\IeC {\'e}matisation du principe de pilotage des grains en d\IeC {\'e}placement. Une bordure est d\IeC {\'e}finie sur la fronti\IeC {\`e}re ext\IeC {\'e}rieure de l'\IeC {\'e}chantillon num\IeC {\'e}rique (zone rouge transparente). Tous les grains dont au moins une partie est dans cette bordure (grains bleus clairs) sont pilot\IeC {\'e}s en d\IeC {\'e}placement. Les d\IeC {\'e}placements impos\IeC {\'e}s (fl\IeC {\`e}ches bleues) aux centres de masse des grains dans l'\IeC {\'e}chantillon (points bleus) sont ceux observ\IeC {\'e}s par interpolation lin\IeC {\'e}aire des r\IeC {\'e}sultats de corr\IeC {\'e}lation de volumes.\relax }}{102}{figure.caption.310}}
+\newlabel{fig05:conditions_limites}{{4.15}{102}{Schématisation du principe de pilotage des grains en déplacement. Une bordure est définie sur la frontière extérieure de l'échantillon numérique (zone rouge transparente). Tous les grains dont au moins une partie est dans cette bordure (grains bleus clairs) sont pilotés en déplacement. Les déplacements imposés (flèches bleues) aux centres de masse des grains dans l'échantillon (points bleus) sont ceux observés par interpolation linéaire des résultats de corrélation de volumes.\relax }{figure.caption.310}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Pilotage des n\oe {}uds de r\IeC {\'e}f\IeC {\'e}rence}{102}{section*.316}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.16}{\ignorespaces (a) Zone d'influence et (b) profil de distribution pour le couplage d'un grain \IeC {\`a} son n\oe {}ud de r\IeC {\'e}f\IeC {\'e}rence.\relax }}{103}{figure.caption.313}}
+\newlabel{fig05:couplage}{{4.16}{103}{(a) Zone d'influence et (b) profil de distribution pour le couplage d'un grain à son n\oe {}ud de référence.\relax }{figure.caption.313}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Grain maill\IeC {\'e} et ensemble des n\oe {}uds coupl\IeC {\'e}s \IeC {\`a} la r\IeC {\'e}f\IeC {\'e}rence.}}}{103}{subfigure.16.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Valeur du coefficient de pond\IeC {\'e}ration pour le couplage distributif en fonction de la distance \IeC {\`a} la r\IeC {\'e}f\IeC {\'e}rence.}}}{103}{subfigure.16.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.17}{\ignorespaces Courbes de d\IeC {\'e}placement d'un n\oe {}ud de r\IeC {\'e}f\IeC {\'e}rence (a) mesur\IeC {\'e}es mais lin\IeC {\'e}aires par partie et (b) approxim\IeC {\'e}es mais r\IeC {\'e}gularis\IeC {\'e}es.\relax }}{104}{figure.caption.317}}
+\newlabel{fig05:courbes_amplitude}{{4.17}{104}{Courbes de déplacement d'un n\oe {}ud de référence (a) mesurées mais linéaires par partie et (b) approximées mais régularisées.\relax }{figure.caption.317}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{104}{subfigure.17.1}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{104}{subfigure.17.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.3}\'El\IeC {\'e}ments de sortie}{104}{subsection.320}}
+\@writefile{toc}{\contentsline {paragraph}{}{105}{section*.321}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Campagnes de simulation}{105}{section.322}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Assemblage des t\IeC {\^a}ches et parall\IeC {\'e}lisation}{105}{subsection.324}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.18}{\ignorespaces Processus d'ex\IeC {\'e}cution du script "segmeshinp" sous Python.\relax }}{106}{figure.caption.323}}
+\newlabel{fig05:segmeshinp}{{4.18}{106}{Processus d'exécution du script "segmeshinp" sous Python.\relax }{figure.caption.323}{}}
+\@writefile{toc}{\contentsline {paragraph}{}{107}{section*.325}}
+\@writefile{toc}{\contentsline {paragraph}{}{107}{section*.326}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}Traitement par s\IeC {\'e}ries}{107}{subsection.327}}
+\@setckpt{./05-Numerique/05-numerique}{
+\setcounter{page}{108}
+\setcounter{equation}{2}
+\setcounter{enumi}{0}
+\setcounter{enumii}{0}
+\setcounter{enumiii}{0}
+\setcounter{enumiv}{0}
+\setcounter{footnote}{3}
+\setcounter{mpfootnote}{0}
+\setcounter{part}{0}
+\setcounter{chapter}{4}
+\setcounter{section}{4}
+\setcounter{subsection}{2}
+\setcounter{subsubsection}{0}
+\setcounter{paragraph}{0}
+\setcounter{subparagraph}{0}
+\setcounter{figure}{18}
+\setcounter{table}{0}
+\setcounter{NAT@ctr}{0}
+\setcounter{parentequation}{0}
+\setcounter{@anim@ltxcnt}{0}
+\setcounter{ContinuedFloat}{0}
+\setcounter{KVtest}{1}
+\setcounter{subfigure}{0}
+\setcounter{subfigure@save}{2}
+\setcounter{lofdepth}{2}
+\setcounter{subtable}{0}
+\setcounter{subtable@save}{0}
+\setcounter{lotdepth}{2}
+\setcounter{AM@survey}{0}
+\setcounter{lstnumber}{1}
+\setcounter{Item}{0}
+\setcounter{Hfootnote}{8}
+\setcounter{bookmark@seq@number}{40}
+\setcounter{lstlisting}{0}
+\setcounter{section@level}{2}
+}

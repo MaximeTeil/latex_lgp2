@@ -1,0 +1,106 @@
+\chapter[Déformations mésoscopiques du milieu granulaire]{Détermination du tenseur des déformations de Green-Lagrange d'un milieu granulaire par une méthode des moindres carrés}
+\label{annexe:deformations}
+
+\section*{Méthode}
+Pour un milieu matériel qui subit une transformation géométrique caractérisée par le tenseur gradient de la transformation $\doubleunderline{F}$, le tenseur des déformations de Green-Lagrange $\doubleunderline{E}$ est défini de la sorte :
+\begin{equation}\label{annexe:definition_E}
+	\doubleunderline{E}
+	= \cfrac{1}{2} \left( \doubleunderline{F}^T \doubleunderline{F} - \doubleunderline{I} \right)
+\end{equation}
+où $\doubleunderline{I}$ est la matrice identité.
+\\Pour caractériser la transformation, il est souvent plus commode de mesurer les déplacements dans le milieu et de définir le tenseur gradient des déplacements $\doubleunderline{H}$ tel que :
+\begin{equation}\label{annexe:gradient_deplacements}
+\underline{u}
+= \doubleunderline{H} \cdot \underline{x} + \underline{u^0}
+= \left( \doubleunderline{F} - \doubleunderline{I} \right) \cdot \underline{x} + \underline{u^0}
+\end{equation}
+avec $\underline{u}$, $\underline{u^0}$ et $\underline{x}$, respectivement, les vecteurs déplacement, déplacement moyen (c'est-à-dire translation de corps rigide) et position associés à un point matériel donné du milieu.
+\\Le fait que $\doubleunderline{H} = \doubleunderline{F} - \doubleunderline{I}$ donne, en utilisant (\ref{annexe:definition_E}) :
+\begin{equation}\label{annexe:green_lagrange_H}
+\doubleunderline{E} = \cfrac{1}{2} \left( \doubleunderline{H} + \doubleunderline{H}^T + \doubleunderline{H}^T\doubleunderline{H} \right)
+\end{equation}
+La méthode pour déterminer le tenseur des déformations de Green-Lagrange de l'ensemble du milieu granulaire consiste à utiliser l'équation (\ref{annexe:green_lagrange_H}) après avoir approximé le tenseur $\doubleunderline{H}$ qui dépend de la position et du déplacement de chacune des particules du milieu.
+
+\section*{Approximation du tenseur gradient des déplacements}
+Par définition, et comme le montre la relation (\ref{annexe:gradient_deplacements}), le gradient des déplacements $\doubleunderline{H}$ est décrit par les positions et déplacements des points matériels constituant le milieu. La connaissance des positions et déplacements des centres de masse de chacune des particules peut donc être utilisée afin d'approximer le tenseur $\doubleunderline{H}$ grâce à un nombre de points de mesure limité.
+Afin de faciliter et permettre les calculs qui suivent, la relation (\ref{annexe:gradient_deplacements}) est réécrite de la manière suivante :
+\begin{equation}\label{annexe:gradient_deplacements_bis}
+	\underline{\tilde{u}}
+	= \doubleunderline{\tilde{H}} \cdot \underline{\tilde{x}}
+	\quad\text{avec}\quad
+		\underline{\tilde{u}}
+		= \begin{bmatrix}
+		u_1\\u_2\\u_3\\1\end{bmatrix}
+	\;\text{,}\quad
+		\doubleunderline{\tilde{H}}
+		= \begin{bmatrix}
+		H_{11} & H_{12} & H_{13} & u_1^0\\
+		H_{21} & H_{22} & H_{23} & u_2^0\\
+		H_{31} & H_{32} & H_{33} & u_3^0\\
+		u_1^0 & u_2^0 & u_3^0 & \tilde{H}_{44}
+		\end{bmatrix}
+	\;\text{et}\quad
+		\underline{\tilde{x}}
+		= \begin{bmatrix}
+		x_1\\x_2\\x_3\\1\end{bmatrix}
+\end{equation}
+$\underline{\tilde{u}}$, $\doubleunderline{\tilde{H}}$ et $\underline{\tilde{x}}$ sont, respectivement, le vecteur déplacement modifié, le tenseur gradient des déplacements modifié et le vecteur position modifié. L'objectif est d'approximer le tenseur gradient des déplacements modifié en utilisant une méthode de minimisation par les moindres carrés. La connaissance de ce tenseur $\doubleunderline{\tilde{H}}$ rend possible la connaissance du tenseur $\doubleunderline{H}$ en ne conservant que les trois premières lignes et colonnes de l'opérateur.
+\\Pour un milieu constitué de $N$ grains, et d'après l'équation (\ref{annexe:gradient_deplacements_bis}), il est possible de déterminer le terme $\chi^2$ suivant (qui est le terme quadratique à minimiser) :
+\begin{equation}\label{annexe:chi_carre}
+\chi^2
+= \sum_{g=1}^{N} \lVert \doubleunderline{\tilde{H}} \cdot \underline{\tilde{x}}^g - \underline{\tilde{u}}^g \rVert^2
+= \sum_{g=1}^{N} \left( \doubleunderline{\tilde{H}} \cdot \underline{\tilde{x}}^g - \underline{\tilde{u}}^g \right)^T \left( \doubleunderline{\tilde{H}} \cdot \underline{\tilde{x}}^g - \underline{\tilde{u}}^g \right)
+= \sum_{g=1}^{N} \left( \delta\underline{\tilde{u}}^g \right)^2
+\end{equation}
+où $\underline{\tilde{x}}^g$ et $\underline{\tilde{u}}^g$ sont respectivement les vecteurs position et déplacement modifiés du centre de masse du grain $g$. \`A partir de maintenant, la notation indicielle sera utilisée pour des raisons de clarté. L'équation (\ref{annexe:chi_carre}) s'écrit de la manière qui suit :
+\begin{equation*}
+\chi^2
+= \sum_{g=1}^{N} \left( \sum_{i=1}^{4} \left( \delta \tilde{u}_i^g \right)^2 \right)
+\qquad\textrm{avec}\qquad
+\delta \tilde{u}_i^g =
+\sum_{j=1}^{4} \left( \tilde{H}_{ij}\tilde{x}_j^g \right) - \tilde{u}_i^g
+\end{equation*}
+\begin{equation}\label{annexe:chi_carre_indicielle}
+\chi^2
+= \sum_{g=1}^{N} \sum_{i=1}^{4} \left( \sum_{j=1}^{4} \left( \tilde{H}_{ij}\tilde{x}_j^g \right) - \tilde{u}_i^g \right)^2
+\end{equation}
+Le développement de la dernière somme dans (\ref{annexe:chi_carre_indicielle}) donne :
+\begin{equation}\label{annexe:chi_carre_indicielle_2}
+\left( \sum_{j=1}^{4} \left( \tilde{H}_{ij}\tilde{x}_j^g \right) - \tilde{u}_i^g \right)^2
+= -\sum_{j=1}^{4} 2\tilde{H}_{ij}\tilde{x}_j^g\tilde{u}_i^g + \sum_{j=1}^{4} \sum_{k=1}^{4} \tilde{H}_{ij}\tilde{H}_{ik}\tilde{x}_j^g\tilde{x}_k^g + (\tilde{u}_i^g)^2
+\end{equation}
+En utilisant (\ref{annexe:chi_carre_indicielle_2}) dans (\ref{annexe:chi_carre_indicielle}), l'expression de $\chi^2$ devient :
+\begin{equation}\label{annexe:chi_carre_indicielle_3}
+\chi^2
+= \sum_{g=1}^{N} \sum_{i=1}^{4} \left( \sum_{j=1}^{4} \left( \sum_{k=1}^{4} \left( \tilde{H}_{ij}\tilde{H}_{ik}\tilde{x}_j^g\tilde{x}_k^g \right) - 2\tilde{H}_{ij}\tilde{x}_j^g\tilde{u}_i^g \right) + (\tilde{u}_i^g)^2 \right)
+\end{equation}
+D'après l'équation (\ref{annexe:gradient_deplacements_bis}), la valeur de $\chi^2$ doit être minimale. Les composantes du tenseur gradient des déplacements modifié $\doubleunderline{\tilde{H}}$ doivent donc être choisies de manière à minimiser $\chi^2$. Afin de minimiser cette valeur par rapport à $\doubleunderline{\tilde{H}}$, la dérivée $\partial\chi^2/\partial \tilde{H}_{lm}$ est calculée en cherchant, pour des valeurs de $l$ et $m$ comprises entre \num{1} et \num{4}, les valeurs de $\tilde{H}_{lm}$ telles que cette dérivée s'annule.
+\begin{equation}\label{annexe:derivee_chi_carre}
+\forall l,m =1,2,3,4\qquad
+\partialdiff{\chi^2}{\tilde{H}_{lm}}
+= \sum_{g=1}^{N} \left( 2\sum_{k=1}^{4} \left( \tilde{H}_{lk}\tilde{x}_k^g \tilde{x}_m^g \right) - 2\tilde{x}_m^g\tilde{u}_l^g \right)
+= 0
+\end{equation}
+La résolution de l'équation (\ref{annexe:derivee_chi_carre}) nous amène à écrire :
+\begin{equation}\label{annexe:resolution_chi_carre}
+\sum_{k=1}^{4} \tilde{H}_{lk} \cdot \sum_{g=1}^{N} \tilde{x}_k^g\tilde{x}_m^g 
+= \sum_{g=1}^{N} \tilde{x}_m^g\tilde{u}_l^g
+\end{equation}
+Si les tenseurs $\doubleunderline{A}$ et $\doubleunderline{B}$ sont définis de la manière suivante :
+\begin{equation}\label{annexe:tenseurs_A_B}
+\begin{array}{l@{\qquad}r@{\ =\ }l}
+\multirow{2}{*}{$\forall i,j = 1,2,3,4$} & A_{ij} & \sum_{g=1}^{N} \tilde{x}_i^g\tilde{x}_j^g \\
+& B_{ij} & \sum_{g=1}^{N} \tilde{u}_i^g\tilde{x}_j^g
+\end{array}
+\end{equation}
+alors l'équation (\ref{annexe:resolution_chi_carre}) peut être réécrite sous forme tensorielle :
+\begin{equation}\label{annexe:H_A_B}
+\doubleunderline{\tilde{H}} = \doubleunderline{B}\doubleunderline{A^{-1}}
+\end{equation}
+La construction des matrices $A$ et $B$ selon (\ref{annexe:tenseurs_A_B}) permet de calculer une approximation de $\doubleunderline{\tilde{H}}$ en utilisant (\ref{annexe:H_A_B}). Il ne reste plus qu'à identifier le tenseur gradient des déplacements $\doubleunderline{H}$ dans $\doubleunderline{\tilde{H}}$ :
+$$
+\forall i,j=1,2,3
+\qquad\qquad
+H_{ij} = \tilde{H}_{ij}
+$$
+L'utilisation de ce tenseur gradient des déplacements dans (\ref{annexe:green_lagrange_H}) permet enfin de calculer le tenseur des déformations de Green-Lagrange.

@@ -1,0 +1,263 @@
+\chapter{\'Eléments de génération d'un modèle Abaqus}
+\label{annexe:modele_abaqus}
+\captionsetup[table]{name=Script, position=bottom}
+
+Cette annexe est utile pour le lecteur qui souhaite comprendre, par l'exemple, comment le modèle de simulation de Abaqus est généré. Le fichier modèle de Abaqus est un fichier de type texte dans lequel se trouve l'ensemble des informations dont Abaqus a besoin pour procéder à une simulation. L'extension de ce fichier est ".inp". Des règles syntaxiques existent et il est conseillé au lecteur de se référer à la documentation très complète du programme Abaqus \citep{abaqus2016} afin de connaître ces règles.
+
+\paragraph{Création des "parts"\\}
+Chaque grain est défini comme une "part". Il est nécessaire de fournir un nom à cette part et de définir la liste des n\oe{}uds ainsi que la table de connectivité (script \ref{script05:def_noeuds}).
+\begin{table}[h]\centering
+	\begin{tabular}{p{0.95\textwidth}}
+		\hline
+		\begin{lstlisting}[language={}, breaklines=true]
+[...]
+*Part, name=grain_0042
+*Node, Nset=grain_0042
+1,    0.128991203033,    0.0607247296402,    0.0970051939871
+2,    0.134017050816,    0.0723279748368,    0.0865197899443
+3,    0.115259352132,    0.0609570183439,    0.0816895740096
+4,    0.120241370234,    0.0818047660289,    0.0930153964876
+[...]
+*Element, type=C3D10M, Elset=grain_0042
+1,  1,  2,  3,  4,  5,  6,  7,  8,  9,  10
+2,  11,  12,  13,  14,  15,  16,  17,  18,  19,  20
+3,  21,  2,  22,  23,  24,  25,  26,  27,  28,  29
+4,  1,  30,  31,  32,  33,  34,  35,  36,  37,  38
+[...]
+		\end{lstlisting}\\
+		\hline
+	\end{tabular}
+	\caption{\label{script05:def_noeuds}Création d'une part et définition des n\oe{}uds et des éléments.}
+\end{table}
+
+\paragraph{Création du matériau et attribution aux parts\\}
+Un nom est donné au matériau. Sa densité en \si[per-mode=symbol]{\tonne\per\milli\meter\cubed} ainsi que ses propriétés mécaniques sont également définies. Les grandeurs dont la dimension est celle d'une pression sont exprimées en \si{\mega\pascal}. Le script \ref{script05:def_materiau} indique la manière de définir le matériau dans le modèle. Une fois que le matériau est correctement défini, il faut l'associer à la géométrie à laquelle il appartient. En l'occurrence les grains. Comme sur le Script \ref{script05:def_materiau_bis}, à chaque ensemble d'élément constituant un grain est définie une section à laquelle est attribuée le matériau.
+\begin{table}[h]\centering
+	\begin{tabular}{p{0.95\textwidth}}
+		\hline
+		\begin{lstlisting}[language={}, breaklines=true]
+*Material, name=PS
+*Density
+1.05e-09,
+*Elastic
+2900.0,    0.38
+*Plastic
+45.0,    0.0
+70.0,    3.0
+		\end{lstlisting}\\
+		\hline
+	\end{tabular}
+	\caption{\label{script05:def_materiau}Création du matériau PS}
+\end{table}
+\begin{table}[h]\centering
+	\begin{tabular}{p{0.95\textwidth}}
+		\hline
+		\begin{lstlisting}[language={}, breaklines=true]
+*Solid Section, elset=grain_0042, controls=EC-1, material=PS
+		\end{lstlisting}\\
+		\hline
+	\end{tabular}
+	\caption{\label{script05:def_materiau_bis}Attribution du matériau}
+\end{table}
+
+\paragraph{Assemblage des grains\\}
+Afin de positionner les grains correctement pour reconstituer le volume scanné en tomographie, un repère global est créé. Chacune des parts se voit associer un repère local, générant ainsi une "instance". Une translation de chacune des instances permet de positionner correctement les grains. Le script \ref{script05:assemblage} indique la manière de générer les différents repères et de procéder à leur translation.
+\begin{table}[h]\centering
+	\begin{tabular}{p{0.95\textwidth}}
+		\hline
+		\begin{lstlisting}[language={}, breaklines=true]
+*Assembly, name=Assembly
+*Instance, name=grain_0001, part=grain_0001
+0.054,  0.513,  0.504
+*End Instance
+*Instance, name=grain_0002, part=grain_0002
+0.09,   0.288,  0.702
+*End Instance
+[...]
+		\end{lstlisting}\\
+		\hline
+	\end{tabular}
+	\caption{\label{script05:assemblage}Assemblage des grains dans le modèle Abaqus}
+\end{table}
+
+\paragraph{Définition des surfaces\\}
+Les frontières extérieures des grains doivent être définies comme des surfaces orientées vers l'extérieur dans Abaqus. Chacun des éléments dont au moins une facette constitue la surface doivent être analysés afin de déterminer quelle face de l'élément appartient à cette surface (sur la numérotation des faces d'un élément, cf. figure \ref{fig05:C3D4_C3D10}). Ainsi, pour chaque grain la surface est définie par la réunion de quatre listes d'éléments. Chaque liste est associée à une face des tétraèdres et détermine les éléments pour lesquels cette face appartient à la frontière des grains. La génération de ces listes et la création des surfaces dans le modèle est illustré dans le script \ref{script05:surfaces}.
+\begin{table}[h]\centering
+	\begin{tabular}{p{0.95\textwidth}}
+		\hline
+		\begin{lstlisting}[language={}, breaklines=true]
+*Elset, elset=grain_0010_S1, internal, instance=grain_0010
+3,  4,  11,  12,  13,  16,  22,  23,  28,  32,  37,  39,  40,  42,  43,  47
+53,  56,  58,  59,  61,  62,  65,  67,  75,  76,  77,  80,  84,  86,  90,  91
+93,  94,  101,  102,  107,  112,  113,  123,  125,  129,  130,  135,  137,  143,  145,  152
+[...]
+*Elset, elset=grain_0010_S2, internal, instance=grain_0010
+38,  274,  481,  848,  1072
+*Elset, elset=grain_0010_S3, internal, instance=grain_0010
+38,  166,  170,  246,  249,  275,  366,  426,  619,  620,  748,  907,  979,  1248,
+*Elset, elset=grain_0010_S4, internal, instance=grain_0010
+69,  166,  226,  231,  244,  426,  617,  620,  629,  656,  748,  907,  964,  1072,  1449
+*Surface, type=ELEMENT, name=grain_0010
+grain_0010_S1,  S1
+grain_0010_S2,  S2
+grain_0010_S3,  S3
+grain_0010_S4,  S4
+		\end{lstlisting}\\
+		\hline
+	\end{tabular}
+	\caption{\label{script05:surfaces}Définition des surfaces}
+\end{table}
+
+\paragraph{Définition des contacts\\}
+Les contacts étant définis comme "rigides", la transmission des efforts entre surfaces est réalisée uniquement lorsque la distance qui les sépare est négative. Lorsque les efforts transmis entre deux surfaces en contact s'annulent, alors le contact n'existe plus. Le paramètre "hard" donné à l'argument "pressure-overclosure" permet de considérer ce type de contact. Le script \ref{script05:contact} en donne un exemple. Afin de connaître la condition de glissement au niveau des zones de contact, une loi de Coulomb est utilisée. Il est donc nécessaire de fournir un coefficient de friction.
+\begin{table}[h]\centering
+	\begin{tabular}{p{0.95\textwidth}}
+		\hline
+		\begin{lstlisting}[language={}, breaklines=true]
+*Surface Interaction, name=IntProp-1
+*Friction
+0.5,
+*Surface Behavior, pressure-overclosure=HARD
+		\end{lstlisting}\\
+		\hline
+	\end{tabular}
+	\caption{\label{script05:contact}Définition des contacts}
+\end{table}
+\\Le script \ref{script05:contact_bis} indique, quant à lui, comment l'attribution des zones de contact potentiel est établi.
+\begin{table}[h]\centering
+	\begin{tabular}{p{0.95\textwidth}}
+		\hline
+		\begin{lstlisting}[language={}, breaklines=true]
+*Contact, op=NEW
+*Contact Inclusions
+grain_0004,     grain_0136_boundary
+grain_0005,     grain_0136_boundary
+grain_0015,     grain_0136_boundary
+[...]
+*Contact Property Assignment
+,      ,       IntProp-1
+		\end{lstlisting}\\
+		\hline
+	\end{tabular}
+	\caption{\label{script05:contact_bis}Attribution des contacts}
+\end{table}
+
+\paragraph{Correction des contacts initiaux\\}
+A la fin de la phase d'assemblage, il est possible que les zones de contact entre les grains soient mal définies géométriquement. En effet, puisque les grains ont subit une augmentation de volume au préalable, il est possible d'observer des zone d'interpénétration des grains au niveau des zones de contact. Il est nécessaire de tenir compte de cette interpénétration lors de la phase de calcul des forces de contact. Pour cela, il est primordial d'utilisé la fonction de correction des contacts d'Abaqus en le mentionnant dans le modèle de simulation comme sur le script \ref{script05:contact_clearance}. La correction doit être menée sur toutes les paires de contact.
+\begin{table}[h]\centering
+	\begin{tabular}{p{0.95\textwidth}}
+		\hline
+		\begin{lstlisting}[language={}, breaklines=true]
+*Contact clearance, name=c1, adjust=NO, search below=0.01, search above=0.004
+*Contact Clearance Assignment
+grain_0004,     grain_0136_boundary,    c1
+grain_0005,     grain_0136_boundary,    c1
+grain_0015,     grain_0136_boundary,    c1
+[...]
+		\end{lstlisting}\\
+		\hline
+	\end{tabular}
+	\caption{\label{script05:contact_clearance}Correction des contacts initiaux}
+\end{table}
+
+\paragraph{Création des n\oe{}uds de référence\\}
+Les n\oe{}uds de référence sont des n\oe{}uds construits de la même manière que les n\oe{}uds constituant le maillage d'un grain. Ils doivent cependant être générés dans la phase d'assemblage. Le script \ref{script05:ref_pts} indique la manière de créer les n\oe{}uds de référence.
+\begin{table}[h]\centering
+	\begin{tabular}{p{0.95\textwidth}}
+		\hline
+		\begin{lstlisting}[language={}, breaklines=true]
+[...]
+*Node, Nset=grain_0209-RefPt_
+209,    0.4188032504,    0.135172275803,    0.053803091947
+[...]
+		\end{lstlisting}\\
+		\hline
+	\end{tabular}
+	\caption{\label{script05:ref_pts}Création des n\oe{}uds de référence}
+\end{table}
+
+\paragraph{Couplage des n\oe{}uds de référence\\}
+Les n\oe{}uds de référence sont couplés avec certains n\oe{}uds constituant le maillage de manière à établir des conditions aux limites similaires à celles observées par la tomographie. Comme le suggère le script \ref{script05:couplage}, le couplage nécessite de définir le n\oe{}ud de référence, l'ensemble des n\oe{}uds couplés à la référence ainsi qu'une méthode de pondération du couplage en fonction de la distance entre la référence et les n\oe{}uds couplés. Pour cela, une liste des n\oe{}uds couplés au point de référence est définie puis une surface est créée à partir de ces n\oe{}uds. Il s'agit d'une "node-based surface", qui est en fait un ensemble de n\oe{}uds déclarés dans Abaqus comme "surface" mais qui ne forment pas nécessairement une surface géométrique (dans le cas présent il s'agit d'un ensemble de n\oe{}uds occupant un volume sphérique). C'est en générant le couplage que la surface est indiquée pour définir les n\oe{}uds couplés au point de référence. L'ensemble des efforts et des moments exercés sur le point de référence est distribué sur aux n\oe{}uds couplés, il est donc nécessaire d'indiquer les six degrés de libertés dans la définition du couplage.
+\begin{table}[h]\centering
+	\begin{tabular}{p{0.95\textwidth}}
+		\hline
+		\begin{lstlisting}[language={}, breaklines=true]
+[...]
+*Nset, nset=grain_0208-coupling_nodes_, internal, instance=grain_0208_boundary
+11,  14,  15,  17,  18,  19,  20,  44,  49,  89,  91,  92,  95,  96,  98,  99
+[...]
+3527,   3530,   3531,   3534
+*Surface, name=grain_0208-coupling_surf_, type=NODE
+grain_0208-coupling_nodes_,
+[...]
+*COUPLING, CONSTRAINT NAME=coupling_grain_0208, REF NODE=grain_0208-RefPt_, SURFACE=grain_0208-coupling_surf_
+*DISTRIBUTING, COUPLING=CONTINUUM, WEIGHTING METHOD=CUBIC
+1,      6
+[...]
+		\end{lstlisting}\\
+		\hline
+	\end{tabular}
+	\caption{\label{script05:couplage}Définition des couplages aux n\oe{}uds de référence}
+\end{table}
+
+\paragraph{Pilotage en déplacement des points de référence\\}
+Les déplacements imposés à titre de conditions aux limites sont définis dans Abaqus dans les arguments associés au mot-clef "*boundary". Néanmoins, leur profil temporel est défini par une courbe fonction du temps appelée amplitude. Ainsi à un instant $t$ le déplacement imposé est égal au produit de l'amplitude à l'instant $t$ par le déplacement prescrit. Il est donc possible d'imposer, lors de chaque pas de chargement, un déplacement  à chaque grain et une courbe d'amplitude linéaire. Pour des raisons techniques, la régularisation des courbes d'amplitude nécessite de définir un déplacement final pour chaque grain et une courbe d'amplitude régularisée. Cette courbe d'amplitude régularisée est différente pour chaque grain. Elle est définie comme un ensemble de points (temps, valeur) qui sont ensuite interpolés par une fonction polynomiale. La syntaxe pour la définition des amplitudes est illustrée par le script \ref{script05:amplitudes}.
+\begin{table}[h]\centering
+	\begin{tabular}{p{0.95\textwidth}}
+		\hline
+		\begin{lstlisting}[language={}, breaklines=true]
+[...]
+*Amplitude, name=AmpX_grain_0116, definition=TABULAR, smooth=0.1
+0, 0, 854.0, 0.0217210623767, 11983.0, 0.0217210623767, 12184.0, 0.0214104101164
+[...]
+*Amplitude, name=AmpY_grain_0116, definition=TABULAR, smooth=0.1
+0, 0, 854.0, -0.0265185671998, 11983.0, -0.0265185671998, 12184.0, -0.0287601113288
+[...]
+*Amplitude, name=AmpZ_grain_0116, definition=TABULAR, smooth=0.1
+0, 0, 854.0, -0.00973635521617, 11983.0, -0.00973635521617, 12184.0, -0.0107952530908
+[...]
+		\end{lstlisting}\\
+		\hline
+	\end{tabular}
+	\caption{\label{script05:amplitudes}Définition des amplitudes de déplacement aux n\oe{}uds de référence}
+\end{table}
+
+\paragraph{Définition des éléments de sortie (sauvegarde)\\}
+Il faut spécifier au modèle de simulation les éléments souhaités en fin de simulation afin d'enregistrer ces éléments en cours de calcul. Ces éléments peuvent être des champs vectoriels comme le champs de déplacement mais également des données temporelles et globale. Le script \ref{script05:sauvegarde_abaqus} illustre la façon de déclarer les éléments de sortie souhaités en fin de simulation dans le modèle Abaqus.
+\begin{table}[h]\centering
+	\begin{tabular}{p{0.95\textwidth}}
+		\hline
+		\begin{lstlisting}[language={}, breaklines=true]
+[...]
+*Output, field, name=nodes_output, number interval=500
+*Node Output
+U
+[...]
+*Output, history, time interval=6.358
+*Contact Output, Surface=grain_0061, Second Surface=grain_0136
+CFT
+*Contact Output, Surface=grain_0090, Second Surface=grain_0136
+CFT
+[...]
+*Output, history, time interval=6.358
+*Node Output, Nset=grain_0150-RefPt_
+RT,     RM
+*Node Output, Nset=grain_0151-RefPt_
+RT,     RM
+[...]
+*Output, history, time interval=6.358
+*Integrated Output, Elset=elem_grain_0001
+COORDCOM,       UCOM,   MASS
+*Integrated Output, Elset=elem_grain_0002
+COORDCOM,       UCOM,   MASS
+[...]
+*Output, history, time interval=6.358
+*Incrementation Output
+DMASS
+		\end{lstlisting}\\
+\hline
+\end{tabular}
+\caption{\label{script05:sauvegarde_abaqus}Définition des sauvegardes à réaliser}
+\end{table}
+
+\captionsetup[table]{name=Tableau, position=bottom}

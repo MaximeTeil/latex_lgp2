@@ -1,0 +1,38 @@
+\chapter{Processus de maillage}
+\label{annexe:maillage}
+
+Cette annexe a pour objectif de préciser au lecteur l'ensemble des tâches réalisées avec le mailleur libre \textit{iso2mesh} tournant sur GNU Octave. Les tâches successives permettent de transmettre une image 3D d'un grain au mailleur afin de générer un maillage volumique adapté à la géométrie du grain.
+
+\paragraph{(a) Importation du volume -}
+Chaque label de l'image segmentée a été sauvegardé dans un dossier sous forme d'une matrice binaire dont la taille est celle de la plus petite boite pouvant contenir le grain labellisé. Dans cette image, chacun des voxels du label concerné a une valeur différente de $0$, tandis que tous les autres ont une valeur nulle. C'est ce volume qui va être utilisé par le mailleur.
+\paragraph{(b) Création du maillage surfacique -}
+Afin de procéder au maillage à partir du volume en niveau de gris, il est nécessaire de déterminer une isosurface dans ce niveau de gris. Le mailleur va alors chercher à suivre cette isosurface en la concevant à partir d'un assemblage de triangles plus ou moins gros. L'indication de la valeur de l'isosurface ne suffit pas à produire un maillage surfacique : il faut également indiquer une taille caractéristique des facettes triangulaires composant le maillage ainsi qu'une méthode adaptée à la génération des mailles. La valeur de l'isosurface doit être comprise entre $0$ et la valeur des voxels constituant le grain. Or, après segmentation les images des grains sont enregistrées au format binaire (porosité à \num{0} et grain à \num{1}) dans une structure matlab (extension ".mat"). Pour cette raison, l'isosurface est toujours choisie comme la valeur \num{0.5}. La méthode choisie est une méthode qui utilise un algorithme de maillage issu du projet CGAL \citep{cgal:eb-19a} et est nommée "cgalmesh" dans iso2mesh. Avec cette méthode, la taille caractéristique des facettes est donnée par le rayon des sphères de Delaunay. Il a été choisi, par des cycles essais-erreurs, de travailler avec des sphères dont le rayons est de \SI{1.05}{\voxel}. La fonction "v2s" d'iso2mesh est utilisée pour cette tâche.
+\paragraph{(c) Analyse et réparation du maillage surfacique -}
+Le maillage issu de l'étape (b) présente fréquemment des défauts. Il est alors primordial de les corriger grâce à la fonction "meshcheckrepair" de la toolbox avant de continuer le processus de maillage. L'assemblage d'éléments triangulaires est analysé afin de corriger les défauts suivants :
+\begin{itemize}
+	\item n\oe{}uds dupliqués ;
+	\item n\oe{}uds isolés ;
+	\item intersection de facettes.
+\end{itemize}
+\paragraph{(d) Rééchantillonnage -}
+Le maillage surfacique obtenu jusqu'ici est relativement dense. En l'état, et en considérant les simulations menées dans cette thèse, un échantillon de quelques dizaines de grains mettrait une dizaine de jours à tourner sur une machine comportant une dizaine de CPUs. L'objectif du rééchantillonage est de diminuer le nombre de n\oe{}uds, et donc d'éléments, dans chacun des grains. C'est ce que fait la fonction "meshresample" en lui fournissant le ratio du nombre de n\oe{}uds en sortie sur celui en entrée. La valeur de ce ratio a été choisie à \num{0.9}.
+\paragraph{(e) Lissage -}
+Le maillage présente actuellement des détails de l'ordre du voxel. Certaines irrégularités sont remarquées en surface. Cela n'est pas être un problème de prime abord puisque la géométrie du maillage est fidèle à la géométrie des grains. Cependant, ces irrégularités vont poser certains problèmes lors des simulations. Les zones de contact tendront à être ponctuelles et de larges contraintes feront leur apparition autour de n\oe{}uds isolés. Afin de réduire la taille de ces aspérités, un lissage des n\oe{}uds du maillage est réalisé. Pour cela la fonction "smoothsurf" est utilisée. La méthode consiste à calculer, pour chaque n\oe{}ud du maillage, la moyenne pondérée entre la position moyenne des n\oe{}uds voisins et la position actuelle. Puisque la moyenne est pondérée, il est nécessaire d'informer un paramètre à la fonction "smoothsurf". Ce paramètre correspond au poids de la position moyenne des grains voisins. Un autre paramètre permet de déterminer le nombre d'itération de l'opération de lissage. Dans ces travaux, trois itérations et un poids de \num{0.7} ont donné satisfaction.
+\paragraph{(f) Réorientation des éléments -}
+Une fois que les n\oe{}uds et les éléments surfaciques sont bien positionnés et dimensionnés, il est important de bien ordonner les éléments triangulaires. Cela est fait en triant les n\oe{}uds dans la liste des éléments par l'intermédiaire de la fonction "surfreorient". La réorganisation des n\oe{}uds fait en sorte que tous les éléments forment une surface fermée et qu'ils soient tous orientés\footnote{Il s'agit ici de l'orientation des éléments.} vers l'extérieur du volume formée par cette surface.
+\paragraph{(g) Création du maillage volumique -}
+A l'issue de l'étape (f), le maillage surfacique est correct. Il est maintenant temps de mailler l'intérieur de la surface afin de générer un maillage volumique. En faisant cela, il est possible de considérer une densité de maillage différente entre la surface et l'intérieur du grain. Le maillage surfacique est déterminé par les étapes (a) à (f), le maillage volumique l'est grâce à la fonction "s2m" qui génère le maillage interne à partir du maillage surfacique et en déterminant la taille maximale des éléments volumiques tétraédriques. Le volume maximal est choisi à \SI{1.5}{\voxel^3}. La méthode de génération choisie pour le maillage interne est la méthode "tetgen". Un autre paramètre permet de déterminer le pourcentage d'éléments conservés après simplification afin de diminuer encore le nombre d'éléments. Dans les travaux présentés, il a été choisi de conserver la moitié des éléments.
+\paragraph{(h) Sauvegarde des définitions des n\oe{}uds, éléments et facettes extérieures -}
+Enfin, le maillage étant complet, la sauvegarde des différents éléments du maillage est réalisée. La liste des n\oe{}uds et de leurs coordonnées est enregistrée sous forme d'une matrice. Une autre matrice contenant la liste des éléments est enregistrée. Chaque élément est défini par une ligne contenant les numéros des n\oe{}uds le constituant. Enfin, une dernière matrice définissant les faces extérieures est sauvegardée. Celle-ci comporte autant de lignes que de faces et chaque ligne indique les numéros des n\oe{}uds la constituant.
+\paragraph{Exemple de script écrit pour GNU Octave\\}
+Le Script \ref{annexe:script_maillage} est écrit dans le but de mailler un seul grain. Il est écrit de manière à être exécuté sous GNU Octave.
+\captionsetup[table]{name=Script, position=bottom}
+\begin{table}\centering
+	\begin{tabular}{p{0.95\textwidth}}
+		\hline
+		\lstinputlisting[language=Octave, breaklines=true]{./05-Numerique/images/maillage/mesh_0016.m}\\
+		\hline
+	\end{tabular}
+	\caption{\label{annexe:script_maillage}Script GNU Octave servant à mailler un grain}
+\end{table}
+\captionsetup[table]{name=Tableau, position=bottom}

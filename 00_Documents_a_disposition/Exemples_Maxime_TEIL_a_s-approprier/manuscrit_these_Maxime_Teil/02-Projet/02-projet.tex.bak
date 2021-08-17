@@ -1,0 +1,87 @@
+\graphicspath{{./02-Projet/images/}}
+
+\chapter{Introduction générale}
+\label{chap:intro}
+%\addcontentsline{toc}{section}{Introduction générale}
+
+\section*{Contexte}
+Cette thèse a été réalisée au sein du laboratoire 3SR de Grenoble dans lequel un axe de recherche a été développé afin d'optimiser la mise en forme de matériaux biosourcés par deux procédés de compression : le moulage par compression ultrasonore et la thermocompression.
+\\Les matériaux biosourcés sont de plus en plus utilisés dans l'industrie de la fabrication dans le but de limiter l'utilisation de matériaux pétrosourcés, qui sont issus d'une ressource fragile aussi bien d'un point de vue écologique que économique. L'intérêt de comprendre ces matériaux est donc évident.
+\\La thermocompression et le moulage par ultrasons ont la particularité de mettre en forme un matériau brut sous forme de grains (souvent le cas pour les matériaux biosourcés) tout en permettant de conserver les structures semi-cristallines natives de ceux-ci en optimisant les paramètres de mise en forme (température, temps de maintien, pression de confinement, ...). Là encore l'intérêt est flagrant.
+\begin{figure}\centering
+	\includegraphics[width=0.5\textwidth]{compression.png}
+	\caption{\label{fig:02-compression}Principe de mise en forme d'un matériau granulaire biosourcé par moulage}
+\end{figure}
+\\La figure~\ref{fig:02-compression} illustre la méthode de mise en forme choisie dans le laboratoire. Dans un premier temps, le matériau granulaire est introduit dans un moule qui définit la forme de la pièce finie. Une fois que le matériau granulaire, qui s'écoule tel un liquide, a pris la forme de l'empreinte du moule, un piston ayant une forme complémentaire au moule vient comprimer sous forte pression l'ensemble. La pression de confinement ainsi appliquée va permettre d'obtenir un matériau dense et, par conséquent, de meilleures caractéristiques mécaniques. Cette mise sous pression à froid suffit généralement à obtenir une pièce qui se tient mais dont les propriétés mécaniques restent faibles. C'est pour cette raison qu'il est nécessaire de chauffer le matériau, afin que les grains puissent créer des liaisons entre eux et ainsi améliorer les propriétés mécaniques de la pièce en sortie de moule. Si la température est trop grande, la température de fusion peut être atteinte et le matériau une fois refroidi ne possédera pas les mêmes propriétés mécaniques que celles des grains natifs. En revanche, pour des températures inférieures à celle de fusion, des liaisons interparticulaires peuvent être créées : il s'agit du frittage. Si la température est trop basse, l'énergie fournie au matériau ne suffit plus au frittage.
+\\On voit bien ici que le choix de la pression et de la température sont déterminants et les deux procédés choisis permettent de gérer l'énergie fournie au matériau pendant sa mise en forme assez facilement. Le procédé de thermocompression consiste à suivre les étapes mentionnées plus haut dans l'ordre : un piston vient comprimer la poudre à la pression voulue puis le moule est chauffé à la température souhaitée afin de diffuser la chaleur au sein de la poudre. Le pression et la température sont maintenues un certain temps. Une fois refroidie la pièce est éjectée. Ce procédé est assez lent (de l'ordre de l'heure) mais le contrôle des paramètres de mise en forme est facile et on observe une bonne reproductibilité. Le procédé de moulage par compression ultrasonore est, quant à lui, basé sur une répétition très rapide de la phase de compression. Le piston vient comprimer le matériau de manière périodique, avec une fréquence comprise dans les ultrasons ($\approx$ \SI{20}{\kilo\hertz}), ce qui génère une onde mécanique suffisamment énergétique pour chauffer le matériau. De plus, il est possible de penser qu'avec ce procédé l'échauffement des grains se fasse de manière plus concentrée par friction ou dissipation visqueuse au niveau des contacts : ce qui permet de conserver la structure globale du grain en ne modifiant de manière irréversible que les zones où les liaisons doivent être établies. Ce dernier procédé est très rapide (de l'ordre de la seconde) mais le contrôle des paramètres et la reproductibilité sont rendus plus difficile qu'en utilisant la thermocompression.
+\paragraph{}
+L'approche scientifique consiste à utiliser les deux procédés présentés ci-dessus avec un matériau granulaire biosourcé. Le choix de l'amidon de mais a été fait. En effet les grains d'amidon sont des structures polymériques complexes (cf. annexe \ref{annexe:amidon}) dans lesquelles des zones cristallines permettent aux grains natifs d'obtenir des propriétés mécaniques intéressantes. L'amidon est également un matériau dont la source est inépuisable tant que la culture des céréales et de certains végétaux perdure.
+
+\section*{Un matériau biosourcé qui concurrence le plastique ?}
+Les deux procédés de mise en forme cités plus haut ont été étudiés à l'échelle du laboratoire sur des grains d'amidon de maïs. Afin d'optimiser les paramètres de mise en forme des deux procédés, de nombreux échantillons ont été produits avec différents paramètres. Les échantillons ont subi des tests de caractérisations mécaniques (flexion, compression diamétrale), physico-chimiques (DRX, densité) et microscopiques (MEB, AFM). La figure~\ref{fig:02-echantillons_amidon} présente un aperçu des échantillons ainsi réalisés.
+\begin{figure}\centering
+	\subfloat[]{
+		\includegraphics[height=110pt]{tablet.jpg}
+		\label{subfig:02-tablet}
+	}
+	\subfloat[]{
+		\includegraphics[height=110pt]{bar.jpg}
+		\label{subfig:02-bar}
+	}
+	\caption{\label{fig:02-echantillons_amidon}\'Echantillons produits à partir des deux procédés de mise en forme : (a) pastilles créées par compression ultrasonore et (b) barre produite par thermocompression}
+\end{figure}
+\\Il a été montré qu'il est possible d'obtenir une pièce constituée d'un matériau dont la cristallinité native des grains est partiellement préservée. Cela permet au matériau de conserver les propriétés mécaniques et physico-chimiques des grains natifs. Les caractéristiques mécaniques dépendent également beaucoup de la densité apparente de la pièce produite.
+\\Les pièces ayant les meilleures caractéristiques mécaniques et réalisées à partir des grains d'amidon de maïs ont vu leur porosité diminuer jusqu'à une valeur inférieure à $1\%$ pour les pièces dont les grains ont changé de phase durant le procédé (gélatinisation) et $10\%$ pour celles dont les grains ont conservé totalement ou partiellement leur structure.
+\\D'un point de vue mécanique, les essais de flexion sur les éprouvettes issues de la thermocompression ont permis d'obtenir les caractéristiques présentées sur le tableau~\ref{tab:02-proprietes_thermocompression}.
+\begin{table}\centering
+	\begin{tabular}{>{\bfseries}r@{\hspace{10mm}}rl}
+		\hline
+		Comportement mécanique & \multicolumn{2}{c}{élastique - fragile} \\
+		Module d'Young & $3~000$ & \SI{}{\mega\pascal} \\
+		Contrainte en flexion & $10$ & \SI{}{\mega\pascal} \\
+		Déformation à rupture & $0.4$ & \SI{}{\%} \\
+		Porosité & $3$ & \% \\
+		Pression de confinement & de $25$ à $100$ & \SI{}{\mega\pascal} \\
+		Cristallinité & \multicolumn{2}{c}{bien préservée} \\
+		\hline
+	\end{tabular}
+	\caption{\label{tab:02-proprietes_thermocompression}Propriétés atteintes par les échantillons moulés par thermocompression}
+\end{table}
+\\ Les échantillons fabriqués par compression ultrasonore sont en forme de pastilles. Pour cette raison, l'essai de compression diamétrale a été choisi pour caractériser les propriétés mécaniques de la pièce. Grâce à cet essai, il est possible de déterminer qualitativement la rigidité du matériau en mesurant la pente de la courbe contrainte-déformation, la résistance mécanique en reportant la valeur de contrainte maximale atteinte et la déformation à rupture en reportant la valeur de la déformation pour laquelle l'éprouvette se fissure. Les pièces qui ont de bonnes caractéristiques mécaniques présentent des propriétés proches de celles données dans le tableau~\ref{tab:02-proprietes_ultrasons}.
+\begin{table}\centering
+	\begin{tabular}{>{\bfseries}r@{\hspace{10mm}}rl}
+		\hline
+		Comportement mécanique & \multicolumn{2}{c}{élastique - fragile} \\
+		Rigidité & $505$ & \SI{}{\mega\pascal} \\
+		Contrainte maximale & $21.2$ & \SI{}{\mega\pascal} \\
+		Déformation à rupture & $12$ & \SI{}{\%} \\
+		Porosité & $1$ & \% \\
+		Pression de confinement & de $5$ à $20$ & \SI{}{\mega\pascal} \\
+		Cristallinité & \multicolumn{2}{c}{partiellement préservée} \\
+		\hline
+	\end{tabular}
+	\caption{\label{tab:02-proprietes_ultrasons}Propriétés atteintes par les échantillons moulés par compression ultrasonore}
+\end{table}
+\\On s'aperçoit, en regardant les tableaux~\ref{tab:02-proprietes_thermocompression} et \ref{tab:02-proprietes_ultrasons}, qu'un tel matériau possède d'assez bonnes caractéristiques mécaniques pour remplacer certains thermoplastiques largement utilisés dans l'industrie de la fabrication tels que les polyéthylènes de faibles et moyennes densités. En ajoutant même des fibres naturelles, il est possible de produire un composite biosourcé à $100\%$ et dont les propriétés mécaniques dépassent celles du polycarbonate ou du PVC \citep{wypych_handbook_2016}.
+
+\section*{Un matériau modèle pour l'étude}
+Bien que le projet scientifique à l'origine des travaux réalisés dans cette thèse ait pour objectif de comprendre le comportement de la poudre d'amidon lors d'une phase de mise en forme, le choix d'utiliser un matériau modèle qui ne soit pas de l'amidon a été fait. Le polystyrène a été choisi comme matériau modèle dans les travaux présentés dans cet ouvrage. Bien que issu de l'industrie pétrochimique, ce matériau polymère a été choisi pour différentes raisons : ses propriétés physiques et chimiques ont été assez largement étudiées, et donc bien connues, il est très disponible car beaucoup utilisé dans le secteur industriel et il peut également être livré sous forme pulvérulente. Les raisons principales de ce choix restent malgré tout la possibilité de travailler sur des grains dont la taille permet l'analyse par imagerie 3D avec les outils du laboratoire et, bien sûr, le comportement mécanique du matériau est proche de celui de l'amidon. En plus de cela, la forme complexe des grains obtenus par cryofracture permet d'envisager l'analyse de milieux constitués de grains irréguliers.
+
+\section*{Objectif des travaux de thèse}
+Les travaux de thèse qui sont présentés dans cet ouvrage ont pour objectif de développer un méthode qui permette de mieux comprendre les relations entre la microstructure d'un milieu granulaire et ses propriétés mécaniques. Une des applications de ces travaux pourrait être l'étude du comportement mécanique d'un matériau granulaire biosourcé soumis à des efforts de compression. Il a été vu dans les paragraphes précédents que la mise en forme d'un tel matériau nécessite deux étapes : une compression et un frittage. Les résultats présentés ici serviraient alors à l'analyse de cette première étape.
+\\Il est possible de distinguer deux approches complémentaires l'une de l'autre dans les travaux qui suivent. En effet, une approche expérimentale permet d'étudier le comportement mécanique et la microstructure d'un milieu granulaire, dans sa globalité, soumis à un chargement triaxial ; mais aussi, une approche numérique permet, quant à elle, d'extraire la microstructure du milieu granulaire et de déterminer les champs de densité et la cinématique locale afin de procéder à des simulations numériques pouvant être directement comparées à l'expérimentation.
+\begin{itemize}
+	\item \textbf{Approche expérimentale} : des essais de compression ont été menés sur le matériau granulaire. Il s'agit d'essais de compression triaxiale de révolution qui est présenté en détail dans le paragraphe \ref{para03:triax}. Les courbes de contraintes et de déformations déduites de cet essai permettent d'interpréter le comportement mécanique de l'ensemble des grains lorsque le matériau est confiné sous une certaine pression et soumis à une pression supplémentaire dans une direction. Lorsque les essais sont réalisés à l'intérieur même d'un tomographe de laboratoire (plus de détails sur la tomographie à rayons X au paragraphe \ref{para03:tomo}), il est alors possible d'observer la microstructure de l'ensemble de l'échantillon durant le test. Cette microstructure nous informe sur la densité du milieu ainsi que sur la cinématique des grains en étudiant les différents états de compression. Les champs de densité, déplacements et déformations sont alors connus localement et globalement grâce à la tomographie tandis que les mesures des capteurs de forces durant l'essai permettent de connaître la réponse globale du système aux conditions imposées.
+	\item \textbf{Approche numérique} : des essais de compression ont été menés sur des échantillons numériques afin de simuler l'essai expérimental. Pour cela, la méthode de simulation choisie est celle des éléments finis multi-particules (voir le paragraphe \ref{para03:MPFEM}). L'utilisation des éléments finis a l'avantage de reproduire fidèlement la géométrie des grains, mais aussi de tenir compte des déformations des grains. Grâce à la tomographie réalisée durant les essais de compression, les simulations sont basées sur les expérimentations :
+	\begin{itemize}
+		\item Les échantillons numériques sont produits à partir des échantillons réels. A chaque étape de compression, les images de tomographie permettent d'obtenir la géométrie entière de l'ensemble des grains constituant l'échantillon. A l'aide d'un algorithme de traitement d'image sur l'état initial de la compression (avant la mise en confinement), il est possible d'individualiser les grains afin d'avoir une "version numérisée" de chacun d'entre eux et d'enregistrer l'agencement réel des grains. Ainsi, une bibliothèque de grains est créée et un assemblage cohérent des grains entre eux est réalisé. \emph{Les grains numérisés sont les images presque parfaites des grains réels}.
+		\item Les images de tomographie permettent de réaliser une corrélation d'images volumiques entre chaque étape de compression. Une interpolation linéaire de la corrélation des volumes rend possible le fait de connaître l'emplacement de chaque grain et donc leur déplacement à chaque étape. Les déplacements observés par la corrélation d'images vont être directement utilisés dans la simulation numérique comme conditions aux limites. Aux hypothèses près, \emph{les déplacements des grains numérisés aux frontières sont ceux des grains réels}.
+	\end{itemize}
+	Avec l'approche numérique il est possible de simuler un même test sur un matériau dont les propriétés sont modifiées afin de mieux comprendre l'effet de chacune de ses propriétés. L'inverse est également possible : il est possible de modifier des conditions de test avec un matériau identique pour mieux comprendre l'effet des conditions expérimentales. On voit ici tout l'intérêt du travail numérique.
+\end{itemize}
+Ces deux approches, expérimentale et numérique, sont complémentaires pour l'étude du comportement mécanique de la poudre sous compression. Les simulations numériques étant fortement basées sur les expérimentations, il est alors très intéressant de mener une étude de comparaison entre les deux approches. Cela permet de mieux cibler les phénomènes en jeu lors de la compression.
+\paragraph{}En plus des résultats observés lors des travaux expérimentaux et numériques, cette thèse présente une nouvelle méthode de modélisation d'un matériau granulaire sous chargement mécanique. Cette méthode est présentée graphiquement sur la figure~\ref{fig:02-method} et consiste à utiliser l'ensemble d'une expérimentation dans une simulation numérique.
+\begin{figure}\centering
+	\includegraphics[width=0.95\textwidth]{method.eps}
+	\caption{\label{fig:02-method}Les différentes étapes des travaux réalisés}
+\end{figure}

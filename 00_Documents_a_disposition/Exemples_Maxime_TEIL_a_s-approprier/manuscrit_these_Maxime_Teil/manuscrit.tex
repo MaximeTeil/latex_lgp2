@@ -1,0 +1,122 @@
+\documentclass[a4paper, 12pt, openright]{book}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[square, numbers]{natbib}
+\usepackage[french, english]{babel}
+\usepackage{lscape}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage[load-configurations = abbreviations]{siunitx}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage[]{animate}
+\usepackage[lofdepth,lotdepth]{subfig}
+\usepackage[justification=centering]{caption}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{eurosym}
+\usepackage{url}
+\usepackage{pdfpages}
+\usepackage{listings}
+\usepackage[shortlabels]{enumitem}
+\usepackage[Lenny]{fncychap}
+\usepackage{epigraph}
+\usepackage{geometry}
+\usepackage[]{hyperref}
+\usepackage{setspace}
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usepackage{tikz-3dplot}
+
+\setlength\epigraphwidth{.75\textwidth}
+
+\geometry{a4paper, left=25mm, right=25mm, top=15mm, bottom=20mm, includehead, includefoot}
+
+\hypersetup{pdfpagemode={UseOutlines}, bookmarksopen=true, bookmarksopenlevel=0,
+	hypertexnames=false, colorlinks=true,% Set to false to disable coloring links
+	%citecolor=magenta,% The color of citations
+	%linkcolor=red,% The color of references to document elements (sections, figures, etc)
+	%urlcolor=blue,% The color of hyperlinks (URLs)
+	citecolor=black,% The color of citations
+	linkcolor=black,% The color of references to document elements (sections, figures, etc)
+	urlcolor=black,% The color of hyperlinks (URLs)
+	pdfstartview={FitV}, unicode, breaklinks=true,
+}
+
+\addto{\captionsfrench}{\renewcommand{\bibname}{Références bibliographiques}}
+
+\sisetup{locale = FR, detect-all}
+
+\captionsetup[table]{name=Tableau, position=bottom}
+
+\setlist[itemize, 1]{label=$\rightarrow$}
+\setlist[itemize, 2]{label=$\looparrowright$}
+\setlist[itemize, 3]{label=$\hookrightarrow$}
+
+\setlist[enumerate]{label=\arabic*}
+
+%%%%%%%%%% DEFINE SPACING %%%%%%%%%%%%%
+%\singlespacing
+%\doublespacing
+\onehalfspacing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%% Define functions
+\def\doubleunderline#1{\underline{\underline{#1}}}
+
+%%%% Define units
+\DeclareSIUnit\voxel{vx}
+
+%%%% Define commands
+\newcommand\grad{\overrightarrow{\textrm{grad}}}
+\newcommand{\diff}[2]{\cfrac{\mathrm{d}#1}{\mathrm{d}#2}}
+\newcommand{\partialdiff}[2]{\cfrac{\partial #1}{\partial #2}}
+\newcommand{\diffn}[3]{\cfrac{\mathrm{d}^#3 #1}{\mathrm{d}#2^#3}}
+\newcommand{\partialdiffn}[3]{\cfrac{\partial^#3 #1}{\partial #2^#3}}
+
+%%% TITLE PAGE
+\title{Imagerie 3D et simulation numérique pour l'étude multi-échelles de la compression d'une poudre constituée de grains déformables}
+
+\begin{document}
+	\selectlanguage{french}
+	
+	\frontmatter
+	\includepdf{./couvertures/couverture_these_finale.pdf}
+	\include{./00-Resume/00-resume}
+	%%%%%%%%%%%%%%%%%%% Epigraph %%%%%%%%%%%%%%%%%%%
+	\null\vspace{\stretch{1}}
+	\epigraph{Ce n'est pas un grand avantage d'avoir l'esprit vif, si on ne l'a juste. La perfection d'une pendule n'est pas d'aller vite, mais d'être réglée.}{Luc \textsc{de Vauvenargues}, moraliste français (1715 - 1747)}
+	\vspace{\stretch{2}}\null
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\include{./01bis_remerciements/01bis_remerciements}
+	\include{./01-Notations/01-notations}
+	\tableofcontents
+	
+	\mainmatter
+	\include{./02-Projet/02-projet}
+	\include{./03-Biblio/03-biblio}
+	\include{./04-Experimentale/04-experimentale}
+	\include{./05-Numerique/05-numerique}
+	\include{./06-Comparaison/06-comparaison}
+	\include{./07-Conclusion/07-conclusion}
+	
+	%\bibliographystyle{unsrt-fr}
+	\bibliographystyle{unsrtnat}
+	\addcontentsline{toc}{chapter}{Références bibliographiques}
+	\bibliography{biblio}
+	
+	\appendix
+	\include{./Annexe_deformations/green_lagrange}
+	\include{./Annexe_contraintes/love}
+	\include{./Annexe_capacites_segm/capacites_segm}
+	\include{./Annexe_maillage/maillage}
+	\include{./Annexe_modele_Abaqus/modele_Abaqus}
+	\include{./Annexe_amidon/amidon}
+	%\cleardoublepage\newpage
+	\includepdf{./couvertures/couverture_4eme_these_finale.pdf}
+	
+\end{document}
