@@ -1,0 +1,111 @@
+% Voici une ligne de commentaire, elle est délimitée par un symbole "%" en début de ligne
+
+% De manière générale, les commandes LaTeX sont indiquées par le symbole "\"
+% Si l'on veut vraiment écrire le symbole "\" alors il faut taper "\{\}"
+% Les arguments des fonctions LaTeX sont toujours données dans des accolades "{}"
+% et les options dans des crochets "[]".
+% Les symboles spéciaux propres à LaTeX peuvent être écrits en insérant un "\" devant
+% exemple : "\{" écrira une accolade ouvrante.
+
+% On appelle la classe appropriée
+\documentclass[a4paper, 11pt]{article} % pour un article
+%\documentclass[a4paper, 11pt]{report} % pour un rapport
+%\documentclass[a4paper, 11pt]{book} % pour un manuscrit de type livre
+%\documentclass[a4paper, 11pt]{beamer} % pour une présentation
+
+% Chaque classe possède ses propriétés mais de très nombreuses sont communes.
+
+% On importe les modules nécessaires
+% En voici une liste bien complète mais non exhaustive
+% Les 3 qui suivent sont obligatoire pour avoir un résultat (encodage et langue)
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+% Pour un meilleur rendu
+\usepackage{lscape}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{eurosym}
+\usepackage{blindtext}
+% Pour écrire les maths
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{bm}
+% Pour écrire des données scientifiques avec ou sans unité
+\usepackage[load-configurations = abbreviations, separate-uncertainty=true]{siunitx}
+% Pour les graphiques et images
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage[]{subcaption}
+\usepackage[]{animate}
+\usepackage[justification=centering]{caption}
+\usepackage{wrapfig}
+% Pour les tableaux
+\usepackage{multirow}
+\usepackage{multicol}
+% Pour les pied de page complexes
+\usepackage[multiple]{footmisc}
+% Pour les hyperliens
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+% Pour la muise en page
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\usepackage{pdfpages}
+\usepackage{fancyhdr}
+% Pour créer des images / graphes vectoriel
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{shapes, decorations.pathmorphing, decorations.markings, arrows}
+
+% Suivent les commandes associées aux différents modules
+% Il faut bien lire la documentation des modules pour savoir les utilisés
+% Il faut les définir dans le préambule, c-a-d avant la création du document
+
+\pagestyle{fancy}
+\date{\today}
+
+\graphicspath{{./fig/}}
+\epstopdfsetup{outdir=./fig/}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[C]{} 
+\fancyhead[L]{Rapport semestriel}
+\fancyhead[R]{26 avril 2021}
+
+\renewcommand{\footrulewidth}{0.4pt}
+\fancyfoot[C]{\textbf{page \thepage}} 
+\fancyfoot[L]{Projet DS3DLive}
+\fancyfoot[R]{Maxime \textsc{Teil}}
+
+\renewcommand{\tablename}{\textsc{Tableau}}
+
+\lstset{language=Python, basicstyle=\ttfamily, numbers=left, breaklines=true, showspaces=false, showstringspaces=false}
+
+% On prépare le titre / pas obligatoire
+\title{Document de base}
+\author{Maxime Teil\thanks{LGP2}}
+\date{\today}
+
+% On crée le document maintenant
+
+\begin{document}
+	
+	\maketitle % Pas obligatoire
+	
+	\blinddocument
+	
+%	% frontmatter, mainmatter et appendix ne sont pas obligatoires et utilsables avec
+%	% la classe book (utile donc pour un manuscrit de thèse donc)
+%	
+%	\frontmatter
+%	Contenu de préface
+%	
+%	\mainmatter
+%	Contenu principal
+%	
+%	\appendix
+%	Contenu des annexes
+	
+\end{document}

@@ -1,0 +1,70 @@
+\documentclass[a4paper, 11pt]{report} % pour un article
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lscape}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{eurosym}
+\usepackage{blindtext}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage[load-configurations = abbreviations, separate-uncertainty=true]{siunitx}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage[]{subcaption}
+\usepackage[]{animate}
+\usepackage[justification=centering]{caption}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage[multiple]{footmisc}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\usepackage{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{shapes, decorations.pathmorphing, decorations.markings, arrows}
+
+\pagestyle{fancy}
+\date{\today}
+
+\graphicspath{{./fig/}}
+\epstopdfsetup{outdir=./fig/}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[C]{} 
+\fancyhead[L]{Rapport semestriel}
+\fancyhead[R]{26 avril 2021}
+
+\renewcommand{\footrulewidth}{0.4pt}
+\fancyfoot[C]{\textbf{page \thepage}} 
+\fancyfoot[L]{Projet DS3DLive}
+\fancyfoot[R]{Maxime \textsc{Teil}}
+
+\renewcommand{\tablename}{\textsc{Tableau}}
+
+\lstset{language=Python, basicstyle=\ttfamily, numbers=left, breaklines=true, showspaces=false, showstringspaces=false}
+
+\title{Amusons-nous un peu !}
+\author{Marlène \textsc{Saulais}\thanks{Doctorante - LGP2}
+		\and Florian \textsc{Le Gallic}\thanks{Doctorant - LGP2}
+		\and Rapha\"el \textsc{Passas}\thanks{Enseignant-Chercheur - Agefpi}
+		\and Maxime \textsc{Teil}\thanks{Postdoc - LGP2}}
+\date{\today}
+
+
+\begin{document}
+	
+	\maketitle
+	
+	\blinddocument
+	
+	
+\end{document}
