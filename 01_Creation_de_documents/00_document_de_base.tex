@@ -45,12 +45,12 @@
 % Pour les tableaux
 \usepackage{multirow}
 \usepackage{multicol}
-% Pour les pied de page complexes
+% Pour les pieds de page complexes
 \usepackage[multiple]{footmisc}
 % Pour les hyperliens
 \usepackage[hidelinks]{hyperref}
 \usepackage{url}
-% Pour la muise en page
+% Pour la mise en page
 \usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
 \usepackage{pdfpages}
 \usepackage{fancyhdr}
@@ -64,7 +64,6 @@
 % Il faut les définir dans le préambule, c-a-d avant la création du document
 
 \pagestyle{fancy}
-\date{\today}
 
 \graphicspath{{./fig/}}
 \epstopdfsetup{outdir=./fig/}
@@ -72,7 +71,7 @@
 \renewcommand{\headrulewidth}{0.4pt}
 \fancyhead[C]{} 
 \fancyhead[L]{Rapport semestriel}
-\fancyhead[R]{26 avril 2021}
+\fancyhead[R]{\today}
 
 \renewcommand{\footrulewidth}{0.4pt}
 \fancyfoot[C]{\textbf{page \thepage}} 
@@ -92,7 +91,7 @@
 
 \begin{document}
 	
-	\maketitle % Pas obligatoire
+	%\maketitle % Pas obligatoire
 	
 	\blinddocument
 	

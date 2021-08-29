@@ -1,4 +1,4 @@
-\documentclass[a4paper, 11pt]{report} % pour un article
+\documentclass[a4paper, 13pt]{report} % pour un article
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -64,7 +64,27 @@
 	
 	\maketitle
 	
-	\blinddocument
+	\chapter{Mon premier chapitre}
+	\blindtext
+	\section{Ma première section}
+	\blindtext[3]
+	Ce \emph{petit mot} est important !\\
+	\chapter{\'Equations}
+	\paragraph{In-line}
+	Je peux écrire $m \times a = \sum F$ sur cette ligne.
+	\paragraph{Pas in-line}
+	Je peux écrire l'équation dessous cette ligne :
+	$$ m \pi \Pi \overrightarrow{a} = F^i_{\text{ext}} + \left(\cfrac{
+		\sqrt{2}
+		}{
+		3
+		}\right)  $$
+	\paragraph{Environnement equation}
+	Je peux écrire sous un environnement équation :
+	\begin{equation}\label{eq:mon_equation}
+		m \times a = \sum F
+	\end{equation}
+	L'équation (\ref{eq:mon_equation}) correspond à la loi de Newton !
 	
 	
 \end{document}
