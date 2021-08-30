@@ -1,0 +1,84 @@
+% Ce document à pour objectif de montrer la manière de générer un unique document
+% (appelé "document maître") à partir de plusieurs autres documents.
+% La classe "livre" est utilisée ici : chaque chapitre sera écrit dans un fichier à part.
+
+% Il s'agit ici du document maître.
+
+\documentclass[a4paper, 13pt]{book} % Pour un livre
+
+% On place tout le préambule (packagesn propriétés, ...) dans le document maître.
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lscape}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{eurosym}
+\usepackage{blindtext}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage[load-configurations = abbreviations, separate-uncertainty=true]{siunitx}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage[]{subcaption}
+\usepackage[]{animate}
+\usepackage[justification=centering]{caption}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage[multiple]{footmisc}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\usepackage{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{shapes, decorations.pathmorphing, decorations.markings, arrows}
+
+\renewcommand{\tablename}{\textsc{Tableau}}
+
+\lstset{language=Python, basicstyle=\ttfamily, numbers=left, breaklines=true, showspaces=false, showstringspaces=false}
+
+\title{Et si on faisait un gros fichier !}
+\author{Marlène \textsc{Saulais}\thanks{Doctorante - LGP2}
+		\and Florian \textsc{Le Gallic}\thanks{Doctorant - LGP2}
+		\and Rapha\"el \textsc{Passas}\thanks{Enseignant-Chercheur - Agefpi}
+		\and Maxime \textsc{Teil}\thanks{Postdoc - LGP2}}
+\date{\today}
+
+% On crée le document dans son ensemble
+
+\begin{document}
+	
+	% On place la page de titre avant toute chose.
+	\maketitle
+	
+	% Puis on insère notre préface par exemple
+	\frontmatter % pour le contenu en préface
+		% On crée une table des matières automatique
+		% Plusieurs options sont possibles (on peut afficher plus ou moins de choses par exemple).
+		\tableofcontents
+		% Il est aussi possible d'afficher une table des figures et/ou une table des tableaux.
+		% Chapitres de préface
+		\include{./chapitres/00_preface}
+		\include{./chapitres/00_preface_autre}
+	
+	\mainmatter % pour le contenu principal
+		\include{./chapitres/01_chap1}
+		\include{./chapitres/02_chap2}
+	
+		% On ajoute une bibliographie ?
+		\bibliographystyle{plain}
+		\bibliography{ma_biblio}
+	
+	\appendix % pour le contenu en annexe
+		\include{./chapitres/annexe00}
+		\include{./chapitres/annexe01}
+	
+	
+\end{document}
