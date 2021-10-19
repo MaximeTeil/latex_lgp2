@@ -1,9 +1,3 @@
-% Ce document à pour objectif de montrer la manière de générer un unique document
-% (appelé "document maître") à partir de plusieurs autres documents.
-% La classe "livre" est utilisée ici : chaque chapitre sera écrit dans un fichier à part.
-
-% Il s'agit ici du document maître.
-
 \documentclass[a4paper, 13pt]{report} % Pour un livre
 
 % On place tout le préambule (packagesn propriétés, ...) dans le document maître.
@@ -217,7 +211,8 @@
 			\begin{tabular}{|c|c|c|p{5cm}}
 				\hline
 				Des maths & Du texte & Une image & Un très long texte\\
-				\cline{1-2, 4}
+				\cline{1-2}
+				\cline{4-4}
 				$D = 2\pi r$ & Salut ! & \includegraphics[width=2em]{smiley.png} & \blindtext \\
 				\hline
 			\end{tabular}
@@ -226,7 +221,8 @@
 			\begin{tabular}{|c|c|c|p{5cm}|}
 				\hline
 				Des maths & Du texte & Une image & Un très long texte\\
-				\cline{1-2}\cline{4-4}
+				\cline{1-2}
+				\cline{4-4}
 				$D = 2\pi r$ & Salut ! & \includegraphics[width=2em]{smiley.png} & \blindtext \\
 				\hline
 			\end{tabular}
@@ -371,7 +367,54 @@
 					\caption{\label{fig:maref}Je me suis fait renvoyé !}
 				\end{figure}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	\chapter{Sous-figures et sous-tableaux}
+		\section{Figures classiques}
+			Ma première figure (Fig \ref{fig:premiere}) ressemble à ça :
+				\begin{figure}[h]\centering
+					\includegraphics[width=.5\textwidth]{legende.jpg}
+					\caption{Ma première légende}
+					\label{fig:premiere}
+				\end{figure}
+			\\Ma seconde figure (Fig \ref{fig:seconde}) ressemble à ça :
+				\begin{figure}[h]\centering
+					\includegraphics[width=.3\textwidth]{gauche.jpg}
+					\caption{Ma seconde légende}
+					\label{fig:seconde}
+				\end{figure}
+			
+		\section{Sous-figures}
+			Voici mes premières sous-figures :
+			\begin{figure}[h]\centering
+				\hfill
+				\begin{subfigure}[b]{.4\textwidth}\centering
+					\includegraphics[width=\textwidth]{legende.jpg}
+					\caption{Ma première légende}
+				\end{subfigure}
+				\hfill
+				\begin{subfigure}[b]{.2\textwidth}\centering
+					\includegraphics[width=\textwidth]{gauche.jpg}
+					\caption{Ma seconde légende}
+				\end{subfigure}
+				\hfill\null
+				\caption{\label{fig:premiere_subfig}Deux figures en une seule !}
+			\end{figure}
 		
 	
 	\chapter{Environnement minipage et "spacer"}
