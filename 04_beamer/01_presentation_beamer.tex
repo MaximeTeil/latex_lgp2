@@ -1,0 +1,168 @@
+\documentclass[8pt]{beamer}
+\usetheme{CambridgeUS}
+%\usetheme{Antibes}
+%\usecolortheme{dolphin}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{blindtext}
+\usepackage{bm}
+\usepackage[load-configurations = abbreviations]{siunitx}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage[]{animate}
+\usepackage{subcaption}
+\usepackage[justification=centering]{caption}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{eurosym}
+\usepackage{url}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{shapes, decorations.pathmorphing, decorations.markings, arrows}
+
+\setbeamertemplate{itemize item}[ball]
+\graphicspath{{./fig/}}
+
+\newcommand{\dd}[2]{\cfrac{\mathrm{d} #1}{\mathrm{d} #2}}
+\newcommand{\ddt}[1]{\dd{#1}{t}}
+\newcommand{\ddelta}[2]{\cfrac{\partial #1}{\partial #2}}
+
+\epstopdfsetup{outdir=./fig/}
+
+\title[Première présentation]{Notre première présentation}
+\subtitle{La classe Beamer}
+\author[Groupe LaTeX]{La tribu du LaTeX\\%
+	\textbf{tribu.latex@lgp2.grenoble-inp.fr}}
+\date{\today}
+\institute[LGP2 - Grenoble INP]{Laboratoire LGP2 - Grenoble INP}
+
+\begin{document}
+
+% L'organisation du document se fait quasiment de la même manière qu'un manuscrit à la différence que seul les sections et subsections sont considérées dans la hiérarchie.
+
+\begin{frame}
+	\maketitle
+\end{frame}
+
+\begin{frame}{Qu'allons nous voir aujourd'hui ?}
+	\tableofcontents
+\end{frame}
+
+\section{Les bases}
+	\begin{frame}
+		\tableofcontents[currentsection]
+	\end{frame}
+\subsection{Créer une page}
+	\begin{frame}{Une page ordinaire}\centering
+		Il suffit de placer le contenu dans un environnement "frame".\vspace{2em}\\
+		Le titre de la page peut être donné en paramètre de l'environnement ou grâce à la commande "\textbackslash frametitle\{\}".
+	\end{frame}
+	\begin{frame}[plain]\centering
+		Voici une page sans aucune barre. Utile pour les grandes images par exemple.
+	\end{frame}
+\subsection{Ajouter du contenu à l'intérieur}
+	\begin{frame}\centering
+		\frametitle{Insertion de texte, d'images et de tableaux}
+		Il est possible d'insérer du texte classique.\\\vfill
+		% Ou bien une image (pas nécessairement avec un flottant)
+		\includegraphics[width=.2\textwidth]{smiley.png}\\\vfill
+		% Ou bien un tableau (pas nécessairement avec un flottant)
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			Un & tableau & très & \multirow{2}{*}{simple}\\
+			\cline{1-3}
+			\multicolumn{3}{|c|}{Une fusion de colonne} & \\
+			\hline
+		\end{tabular}
+	\end{frame}
+	\begin{frame}{Un exemple de minipage}\centering
+		Comment insérer un texte et un tableau côte à côte ?\\\vfill
+		\begin{minipage}[c]{.75\textwidth}\centering
+			\blindtext		
+		\end{minipage}\hfill
+		\begin{minipage}[c]{.2\textwidth}\centering
+			\includegraphics[width=\textwidth]{smiley.png}
+		\end{minipage}
+	\end{frame}
+\subsection{Les blocs}
+	\begin{frame}{Donner un sens au contenu}
+		\begin{block}{Bloc basique}
+			Voici un bloc de texte basique avec l'environnement "block"
+		\end{block}
+		\begin{alertblock}{Bloc important}
+			Voici un bloc d'alerte avec "alertblock"
+		\end{alertblock}
+		\begin{exampleblock}{Bloc d'exemple}
+			Voici un bloc d'exemple avec "exampleblock"
+		\end{exampleblock}
+	\end{frame}
+
+\section{Un peu de dynamisme}
+	\begin{frame}
+		\tableofcontents[currentsection]
+	\end{frame}
+\subsection{Les pauses}
+	\begin{frame}{Le plus simple avec la commande "\textbackslash pause"}\centering
+		C'est très important et c'est donc mentionner en premier ;\\\vfill \pause
+		C'est un autre point important à mentionner en second ;\\\vfill \pause
+		C'est encore important mais ce n'est mentionné qu'en toute fin.\\\vfill \pause
+		\includegraphics[width=.15\textwidth]{smiley.png}
+	\end{frame}
+	\begin{frame}{Les pauses dans les listes}\centering
+		Il est souvent utile de procéder à des pauses dans des listes :
+		\begin{itemize}
+			\item<1> Cela ne s'affichera qu'au premier slide ;
+			\item<1-2> Cela au premier ainsi qu'au second ;
+			\item<1-> Celui-la s'affiche du premier au dernier ;
+			\item<3> Celui-ci uniquement au troisième.
+		\end{itemize}
+	\end{frame}
+	\begin{frame}{Les pauses dans les listes}\centering
+		Il est souvent utile de procéder à des pauses ordonnées dans des listes :
+		\begin{itemize}[<+->]
+			\item Premier item
+			\item Second
+			\item Troisième et dernier
+		\end{itemize}
+	\end{frame}
+	\begin{frame}{Spécifications et environnements}\centering
+		\begin{block}{Explication}
+			Les spécifications peuvent être utilisées sur une très grande majorité d'environnements grâce à l'option "[<>]"
+		\end{block}
+		\begin{exampleblock}{Un exemple avec ce block}<2>
+			En voici un exemple !
+		\end{exampleblock}
+	\end{frame}
+	\begin{frame}{Quelques commandes spécifiques}
+		\begin{description}[<+->]
+			\item[\textbackslash only<>] Le texte apparaît uniquement aux slides spécifiées. Aux autres slides, l'espace nécessaire à l'affichage n'est pas utilisé.
+			\item[\textbackslash visible<>] Même chose que "only" mais l'espace d'affichage est toujours utilisé.
+			\item[\textbackslash invisible<>] Opposé de "visible".
+			\item[\textbackslash alt<>] Avec deux arguments : un texte de défaut et un texte de substitution.
+			\item[\textbackslash temporal<>] Trois arguments : un texte avant spécification, un autre pendant et un autre après.
+			\item[\textbackslash uncover<>] Le texte est découvert uniquement aux slides spécifiées.
+		\end{description}
+		\begin{uncoverenv}<7>
+		\begin{block}{Des environnements similaires}
+			Il est possible de mettre de gros morceaux dans ces commandes avec les environnements associés : onlyenv, visibleenv, uncoverenv, altenv, ...
+		\end{block}
+		\end{uncoverenv}
+	\end{frame}
+\subsection{Les mises en exergue}
+	\begin{frame}{La commande "\textbackslash alert<>"}
+		\alert{Alerte sur tous les slides}\\\vfill
+		\alert<1>{Alerte uniquement au slide 1}\\\vfill
+		\alert<1-2>{Alerte aux deux premiers slides}\\\vfill
+		\alert<2-3>{Alerte aux slides 2 et 3}\\\vfill
+		Cela marche aussi avec les formatages de texte comme mettre \textbf<4>{en gras}, \textsc<4>{en petites capitales}, {\color<4>{red}en couleur rouge}, etc.
+	\end{frame}
+
+
+\end{document}
