@@ -72,7 +72,8 @@
 		\frametitle{Insertion de texte, d'images et de tableaux}
 		Il est possible d'insérer du texte classique.\\\vfill
 		% Ou bien une image (pas nécessairement avec un flottant)
-		\includegraphics[width=.2\textwidth]{smiley.png}\\\vfill
+		\includegraphics[width=.2\textwidth]{smiley.png}\\
+		Ma figure\\\vfill
 		% Ou bien un tableau (pas nécessairement avec un flottant)
 		\begin{tabular}{|c|c|c|c|}
 			\hline
@@ -145,7 +146,7 @@
 			\item[\textbackslash only<>] Le texte apparaît uniquement aux slides spécifiées. Aux autres slides, l'espace nécessaire à l'affichage n'est pas utilisé.
 			\item[\textbackslash visible<>] Même chose que "only" mais l'espace d'affichage est toujours utilisé.
 			\item[\textbackslash invisible<>] Opposé de "visible".
-			\item[\textbackslash alt<>] Avec deux arguments : un texte de défaut et un texte de substitution.
+			\alt<4-5>{\item[\textbackslash alt<>] Avec deux arguments : un texte de défaut et un texte de substitution.}{\item J'ai changé !}
 			\item[\textbackslash temporal<>] Trois arguments : un texte avant spécification, un autre pendant et un autre après.
 			\item[\textbackslash uncover<>] Le texte est découvert uniquement aux slides spécifiées.
 		\end{description}
